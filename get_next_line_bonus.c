@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/06 16:36:00 by adrijime          #+#    #+#             */
+/*   Updated: 2024/05/06 16:54:20 by adrijime         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 char	*update_storage(char *storage)
@@ -112,7 +124,7 @@ char	*get_next_line(int fd)
 	storage[fd] = update_storage(storage[fd]);
 	return (line);
 }
-
+/*
 #include <fcntl.h>
 #include <stdio.h>
 
@@ -128,3 +140,4 @@ int	main()
     close(fd);
     return (0);
 }
+*/
