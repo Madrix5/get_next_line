@@ -6,13 +6,13 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:36:06 by adrijime          #+#    #+#             */
-/*   Updated: 2024/05/06 16:53:27 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/05/08 20:45:04 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*update_storage(char *storage)
+char	*upd_storage(char *storage)
 {
 	char	*new_storage;
 	int		i;
@@ -50,7 +50,7 @@ int	test(char *line, char *storage, int i)
 	return (i);
 }
 
-char	*extract_line(char *storage)
+char	*new_line(char *storage)
 {
 	char	*line;
 	int		i;
@@ -79,7 +79,7 @@ char	*extract_line(char *storage)
 char	*fill_storage(int fd, char *storage)
 {
 	char	*buffer;
-	int		num_bits;
+	int		bits;
 
 	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buffer)
@@ -88,15 +88,15 @@ char	*fill_storage(int fd, char *storage)
 		return (NULL);
 	}
 	buffer[0] = '\0';
-	num_bits = 1;
-	while (num_bits > 0 && !ft_strchr(buffer, '\n'))
+	bits = 1;
+	while (bits > 0 && !ft_strchr(buffer, '\n'))
 	{
-		num_bits = read(fd, buffer, BUFFER_SIZE);
-		if (num_bits == -1)
+		bits = read(fd, buffer, BUFFER_SIZE);
+		if (bits == -1)
 		{
 			return (free(storage), free(buffer), NULL);
 		}
-		buffer[num_bits] = '\0';
+		buffer[bits] = '\0';
 		storage = ft_strjoin(storage, buffer);
 	}
 	free(buffer);
@@ -116,14 +116,14 @@ char	*get_next_line(int fd)
 		storage = fill_storage(fd, storage);
 	if (!storage)
 		return (NULL);
-	line = extract_line(storage);
+	line = new_line(storage);
 	if (!line)
 	{
 		free(storage);
 		storage = NULL;
 		return (NULL);
 	}
-	storage = update_storage(storage);
+	storage = upd_storage(storage);
 	return (line);
 }
 /*

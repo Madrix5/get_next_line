@@ -6,7 +6,7 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:36:09 by adrijime          #+#    #+#             */
-/*   Updated: 2024/05/06 16:36:10 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/05/08 20:41:28 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 #  define BUFFER_SIZE 10
 # endif
 
-char	*update_storage(char *storage);
-char	*extract_line(char *storage);
+char	*upd_storage(char *storage);
+char	*new_line(char *storage);
 char	*fill_storage(int fd, char *storage);
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);

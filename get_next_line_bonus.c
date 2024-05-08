@@ -6,13 +6,13 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:36:00 by adrijime          #+#    #+#             */
-/*   Updated: 2024/05/06 16:54:20 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/05/08 20:44:54 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*update_storage(char *storage)
+char	*upd_storage(char *storage)
 {
 	char	*new_storage;
 	int		i;
@@ -50,7 +50,7 @@ int	test(char *line, char *storage, int i)
 	return (i);
 }
 
-char	*extract_line(char *storage)
+char	*new_line(char *storage)
 {
 	char	*line;
 	int		i;
@@ -114,14 +114,14 @@ char	*get_next_line(int fd)
 		storage[fd] = fill_storage(fd, storage[fd]);
 	if (!storage[fd])
 		return (NULL);
-	line = extract_line(storage[fd]);
+	line = new_line(storage[fd]);
 	if (!line)
 	{
 		free(storage[fd]);
 		storage[fd] = NULL;
 		return (NULL);
 	}
-	storage[fd] = update_storage(storage[fd]);
+	storage[fd] = upd_storage(storage[fd]);
 	return (line);
 }
 /*
